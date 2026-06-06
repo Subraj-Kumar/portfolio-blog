@@ -12,22 +12,22 @@ const sortedPosts = allPosts.sort(
 ---
 <BaseLayout title="Blog | SYS.DEV">
   
-  <header class="mb-16 max-w-3xl pt-12">
+  <header class="mb-16 max-w-3xl pt-12 animate-slide-up">
     <h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-on-surface mb-6">Technical Logs & Learnings</h1>
     <p class="font-body-lg text-body-lg text-on-surface-variant">Deep dives into system architecture, performance optimization, and low-level engineering. Documenting the process of building scalable software.</p>
   </header>
 
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter mb-section-gap">
-    {sortedPosts.map((post) => (
-      <a href={`/blog/${post.id}`} class="surface-raised rounded-lg p-6 flex flex-col hover-glow transition-all duration-300 group cursor-pointer">
+    {sortedPosts.map((post, index) => (
+      <a href={`/blog/${post.id}`} class="surface-raised rounded-lg p-6 flex flex-col hover-glow transition-all duration-300 group cursor-pointer stagger-item" style={`animation-delay: ${index * 100}ms`}>
         
         <div class="flex justify-between items-start mb-4">
           {post.data.tags && post.data.tags.length > 0 ? (
-            <span class="font-code-sm text-code-sm text-primary px-2 py-1 rounded bg-[#1A1A1A]">
+            <span class="font-code-sm text-code-sm text-primary px-2 py-1 rounded bg-[#1A1A1A] group-hover:bg-primary-container/20 transition-colors">
               {post.data.tags[0].toUpperCase()}
             </span>
           ) : (
-            <span class="font-code-sm text-code-sm text-primary px-2 py-1 rounded bg-[#1A1A1A]">
+            <span class="font-code-sm text-code-sm text-primary px-2 py-1 rounded bg-[#1A1A1A] group-hover:bg-primary-container/20 transition-colors">
               LOG
             </span>
           )}
@@ -36,7 +36,7 @@ const sortedPosts = allPosts.sort(
           </span>
         </div>
         
-        <h2 class="font-headline-md text-headline-md text-on-surface mb-3 group-hover:text-primary-container transition-colors">
+        <h2 class="font-headline-md text-headline-md text-on-surface mb-3 group-hover:text-primary-container transition-colors duration-300">
           {post.data.title}
         </h2>
         
@@ -44,8 +44,8 @@ const sortedPosts = allPosts.sort(
           {post.data.description}
         </p>
         
-        <div class="flex items-center text-on-surface-variant font-code-sm text-code-sm mt-auto group-hover:text-primary-container transition-colors">
-          <span class="material-symbols-outlined mr-2 text-[16px]">schedule</span>
+        <div class="flex items-center text-on-surface-variant font-code-sm text-code-sm mt-auto group-hover:text-primary-container transition-colors duration-300">
+          <span class="material-symbols-outlined mr-2 text-[16px] group-hover:scale-110 transition-transform duration-300">schedule</span>
           <span>{post.data.readingTime || '5 min read'}</span>
         </div>
         
