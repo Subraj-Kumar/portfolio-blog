@@ -1,9 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-// Note: We aren't fetching the projects collection here anymore since this is purely the About overview.
 ---
 <BaseLayout title="Subraj Kumar | SYS.DEV">
   
+  <!-- Hero Section -->
   <section class="mb-section-gap pt-12">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
       <div class="lg:col-span-7">
@@ -12,7 +12,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           Solving complex problems with elegant, performant code.
         </h1>
         <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
-          I am a Computer Science Engineering student and Full-Stack Developer focused on the intersection of systems architecture, computer vision, and seamless user experiences. My approach is rooted in technical minimalism: removing the unnecessary to amplify the essential.
+          I am a B.Tech Computer Science Engineering student focused on full-stack development, computer vision, systems programming, and competitive programming. My approach is rooted in technical minimalism: removing the unnecessary to amplify the essential.
         </p>
       </div>
       <div class="lg:col-span-5 flex justify-end mt-12 lg:mt-0">
@@ -24,28 +24,31 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
+  <!-- Core Capabilities -->
   <section class="mb-section-gap">
     <h2 class="font-headline-md text-headline-md text-on-surface mb-12">Core Capabilities</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
       <div class="p-8 bg-surface-container-low border border-outline-variant rounded-lg hover:border-primary-container transition-colors group surface-raised hover-glow">
         <span class="material-symbols-outlined text-primary-container mb-6 text-4xl">layers</span>
         <h3 class="font-headline-md text-headline-md text-on-surface mb-4">Full-Stack Architecture</h3>
-        <p class="font-body-md text-body-md text-on-surface-variant">Building end-to-end platforms from Flutter mobile applications and Firebase backends to robust MERN stack web services.</p>
+        <p class="font-body-md text-body-md text-on-surface-variant">Building end-to-end platforms using React, Node.js, Express, Flask, and MongoDB, alongside mobile applications using Flutter and Firebase.</p>
       </div>
       <div class="p-8 bg-surface-container-low border border-outline-variant rounded-lg hover:border-primary-container transition-colors group surface-raised hover-glow">
         <span class="material-symbols-outlined text-primary-container mb-6 text-4xl">memory</span>
         <h3 class="font-headline-md text-headline-md text-on-surface mb-4">Systems & Vision</h3>
-        <p class="font-body-md text-body-md text-on-surface-variant">Engineering low-level C++ rendering pipelines and implementing real-time computer vision models using OpenCV and YOLO.</p>
+        <p class="font-body-md text-body-md text-on-surface-variant">Developing systems using C/C++ and implementing computer vision pipelines using Python, OpenCV, and YOLO.</p>
       </div>
       <div class="p-8 bg-surface-container-low border border-outline-variant rounded-lg hover:border-primary-container transition-colors group surface-raised hover-glow">
         <span class="material-symbols-outlined text-primary-container mb-6 text-4xl">terminal</span>
         <h3 class="font-headline-md text-headline-md text-on-surface mb-4">Algorithmic Precision</h3>
-        <p class="font-body-md text-body-md text-on-surface-variant">Maintaining a rigorous study of Data Structures, Algorithms, and competitive programming to ensure highly optimized logic.</p>
+        <p class="font-body-md text-body-md text-on-surface-variant">Secured 2nd Runner-up in the BIG'O' EngQuest 3.0 Competitive Programming Contest, with strong foundations in Data Structures & Algorithms.</p>
       </div>
     </div>
   </section>
 
+  <!-- Experience & Education -->
   <section class="grid grid-cols-1 lg:grid-cols-2 gap-24 mb-section-gap">
+    <!-- Experience -->
     <div>
       <h2 class="font-headline-md text-headline-md text-on-surface mb-12">Professional Experience</h2>
       <div class="space-y-12 relative">
@@ -54,13 +57,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="pl-8 relative">
           <div class="absolute left-[-4px] top-2 w-2 h-2 rounded-full bg-primary-container glow-shadow"></div>
           <span class="font-code-sm text-code-sm text-primary-container mb-2 block">FEB 2026 - MAY 2026</span>
-          <h4 class="font-headline-md text-headline-md text-on-surface">Software Intern</h4>
+          <h4 class="font-headline-md text-headline-md text-on-surface">Software Developer (Client Project)</h4>
           <p class="font-label-caps text-label-caps text-on-surface-variant mb-4">GETNEAR - HYPERLOCAL MARKETPLACE</p>
-          <p class="font-body-md text-body-md text-on-surface-variant mb-6">Built a production Android marketplace enabling buyers to broadcast real-time product inquiries to nearby sellers via geolocation. Integrated Firebase Auth, Firestore, and engineered a Targeted Promotions System with role-based access.</p>
+          <p class="font-body-md text-body-md text-on-surface-variant mb-6">Built a production Android marketplace (Flutter/Dart) enabling buyers to broadcast real-time product inquiries to nearby sellers via geolocation and category-based filtering. Integrated Firebase Auth, Firestore, Cloud Storage, and FCM for end-to-end inquiry lifecycle workflows.</p>
           <div class="flex flex-wrap gap-2">
             <span class="px-3 py-1 bg-surface-container-high border border-outline-variant text-code-sm font-code-sm text-on-surface rounded">Flutter</span>
             <span class="px-3 py-1 bg-surface-container-high border border-outline-variant text-code-sm font-code-sm text-on-surface rounded">Firebase</span>
-            <span class="px-3 py-1 bg-surface-container-high border border-outline-variant text-code-sm font-code-sm text-on-surface rounded">GCP</span>
+            <span class="px-3 py-1 bg-surface-container-high border border-outline-variant text-code-sm font-code-sm text-on-surface rounded">Dart</span>
           </div>
         </div>
 
@@ -69,33 +72,34 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <span class="font-code-sm text-code-sm text-on-surface-variant mb-2 block">AUG 2025 - PRESENT</span>
           <h4 class="font-headline-md text-headline-md text-on-surface">Executive</h4>
           <p class="font-label-caps text-label-caps text-on-surface-variant mb-4">LOOP: THE DEVELOPER'S CLUB</p>
-          <p class="font-body-md text-body-md text-on-surface-variant mb-6">Organized technical workshops on full-stack development and DSA. Authored standard operating procedures and executed hackathons, significantly increasing student engagement.</p>
+          <p class="font-body-md text-body-md text-on-surface-variant mb-6">Organized technical workshops on full-stack development and DSA; authored SOPs and executed hackathons, increasing student engagement by 20%.</p>
         </div>
       </div>
     </div>
 
+    <!-- Education -->
     <div>
       <h2 class="font-headline-md text-headline-md text-on-surface mb-12">Academic Foundation</h2>
       
       <div class="bg-surface-container-low border border-outline-variant p-8 rounded-lg mb-8 surface-raised">
-        <span class="font-code-sm text-code-sm text-primary-container mb-2 block">EXPECTED GRADUATION 2027</span>
+        <span class="font-code-sm text-code-sm text-primary-container mb-2 block">2023 - 2027</span>
         <h4 class="font-headline-md text-headline-md text-on-surface mb-2">B.Tech Computer Science Engineering</h4>
         <p class="font-label-caps text-label-caps text-on-surface-variant mb-6">JAWAHARLAL NEHRU UNIVERSITY, NEW DELHI</p>
         
-        <h5 class="font-label-caps text-label-caps text-on-surface mb-4">FOCUSED DOMAINS</h5>
+        <h5 class="font-label-caps text-label-caps text-on-surface mb-4">LEADERSHIP</h5>
         <ul class="space-y-4">
           <li class="flex items-start gap-4">
-            <span class="material-symbols-outlined text-primary-container text-xl">visibility</span>
+            <span class="material-symbols-outlined text-primary-container text-xl">terminal</span>
             <div>
-              <p class="font-body-md text-body-md text-on-surface">Computer Vision</p>
-              <p class="font-code-sm text-code-sm text-on-surface-variant">Real-time object detection and centroid tracking.</p>
+              <p class="font-body-md text-body-md text-on-surface">Loop</p>
+              <p class="font-code-sm text-code-sm text-on-surface-variant">Executive, The Developer's Club</p>
             </div>
           </li>
           <li class="flex items-start gap-4">
-            <span class="material-symbols-outlined text-primary-container text-xl">dns</span>
+            <span class="material-symbols-outlined text-primary-container text-xl">sports_esports</span>
             <div>
-              <p class="font-body-md text-body-md text-on-surface">Systems Programming</p>
-              <p class="font-code-sm text-code-sm text-on-surface-variant">Low-level rendering pipelines and C++ engines.</p>
+              <p class="font-body-md text-body-md text-on-surface">Ephirium</p>
+              <p class="font-code-sm text-code-sm text-on-surface-variant">Secretary, Gaming and Game Development Club</p>
             </div>
           </li>
         </ul>
@@ -107,22 +111,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <p class="font-headline-md text-headline-md text-primary-container">7.62 / 10</p>
         </div>
         <div class="p-6 border border-outline-variant rounded-lg bg-surface-container-low">
-          <p class="font-label-caps text-label-caps text-on-surface-variant mb-2">LEADERSHIP</p>
-          <p class="font-headline-md text-headline-md text-primary-container">Sec. Ephirium</p>
+          <p class="font-label-caps text-label-caps text-on-surface-variant mb-2">ACHIEVEMENT</p>
+          <p class="font-headline-md text-headline-md text-primary-container">IOQM Merit</p>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- CTA Section -->
   <section class="mb-section-gap">
     <div class="bg-surface-container border border-outline-variant p-12 md:p-24 text-center rounded-xl relative overflow-hidden surface-raised">
       <div class="absolute top-0 right-0 w-64 h-64 bg-primary-container/5 rounded-full blur-[100px]"></div>
       <div class="absolute bottom-0 left-0 w-48 h-48 bg-secondary-container/5 rounded-full blur-[80px]"></div>
       
       <h2 class="font-display-lg text-display-lg text-on-surface mb-8 relative z-10">Let's collaborate on the next system.</h2>
-      <p class="font-body-lg text-body-lg text-on-surface-variant mb-12 max-w-2xl mx-auto relative z-10">
-        I am always looking for challenging projects in full-stack architecture, performance engineering, and systems programming.
-      </p>
       
       <div class="flex flex-col md:flex-row justify-center gap-gutter relative z-10">
         <a href="mailto:kumarsubraj97@gmail.com" class="px-10 py-4 bg-primary-container text-on-primary font-label-caps text-label-caps hover:opacity-90 transition-all flex items-center justify-center gap-2 glow-button rounded">
@@ -130,7 +132,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           EMAIL ME
         </a>
         <div class="flex gap-4 justify-center">
-          <a href="https://github.com/subraj" target="_blank" rel="noopener noreferrer" class="w-14 h-14 border border-outline-variant flex items-center justify-center hover:border-primary-container transition-colors group rounded">
+          <a href="https://github.com/Subraj" target="_blank" rel="noopener noreferrer" class="w-14 h-14 border border-outline-variant flex items-center justify-center hover:border-primary-container transition-colors group rounded">
             <span class="material-symbols-outlined text-on-surface group-hover:text-primary-container">code</span>
           </a>
         </div>
