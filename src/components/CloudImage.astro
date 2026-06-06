@@ -1,0 +1,14 @@
+---
+interface Props {
+  imageId: string; // The specific image name/path in your Cloudinary account
+  alt: string;
+  className?: string;
+}
+
+const { imageId, alt, className = "" } = Astro.props;
+const cloudName = import.meta.env.PUBLIC_CLOUDINARY_CLOUD_NAME;
+
+// This URL automatically converts the image to the best format (WebP/AVIF) and optimizes quality
+const optimizedUrl = `https://res.cloudinary.com/${cloudName}/image/upload/f_auto,q_auto/${imageId}`;
+---
+<img src={optimizedUrl} alt={alt} class={`rounded-lg object-cover ${className}`} loading="lazy" />

@@ -1,0 +1,46 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const allProjects = await getCollection('projects');
+---
+<BaseLayout title="Projects | SYS.DEV">
+  
+  <header class="mb-16 max-w-3xl pt-12">
+    <h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-on-surface mb-6">Engineering Projects</h1>
+    <p class="font-body-lg text-body-lg text-on-surface-variant">A collection of systems architecture, full-stack platforms, and low-level engineering implementations built for scale and performance.</p>
+  </header>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter mb-section-gap">
+    {allProjects.map((project) => (
+      <a href={`/projects/${project.id}`} class="surface-raised rounded-lg p-6 flex flex-col hover-glow transition-all duration-300 group cursor-pointer">
+        
+        <div class="flex justify-between items-start mb-4">
+          <div class="flex flex-wrap gap-2">
+            {/* Show up to 2 tech stack items to keep the header clean */}
+            {project.data.techStack.slice(0, 2).map((tech, index) => (
+              <span class={`font-code-sm text-code-sm px-2 py-1 rounded bg-[#1A1A1A] ${index === 0 ? 'text-primary' : 'text-on-surface-variant border border-outline-variant/30'}`}>
+                {tech.toUpperCase()}
+              </span>
+            ))}
+          </div>
+        </div>
+        
+        <h2 class="font-headline-md text-headline-md text-on-surface mb-3 group-hover:text-primary-container transition-colors">
+          {project.data.title}
+        </h2>
+        
+        <p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow">
+          {project.data.description}
+        </p>
+        
+        <div class="flex items-center text-on-surface-variant font-code-sm text-code-sm mt-auto group-hover:text-primary-container transition-colors">
+          <span class="material-symbols-outlined mr-2 text-[16px]">code</span>
+          <span>View Architecture &rarr;</span>
+        </div>
+        
+      </a>
+    ))}
+  </div>
+
+</BaseLayout>

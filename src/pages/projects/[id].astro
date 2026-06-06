@@ -1,0 +1,52 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// This function tells Astro to generate a page for every markdown file in your projects folder
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map(project => ({
+    params: { id: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+// Render the markdown content
+const { Content } = await render(project);
+---
+
+<BaseLayout title={`${project.data.title} | DEV_CORE`}>
+  <article class="max-w-container-max mx-auto pb-section-gap">
+    
+    <header class="mb-16 border-b border-outline-variant/20 pb-12">
+      <div class="mb-6 flex flex-wrap gap-2">
+        {project.data.techStack.map((tech) => (
+          <span class="font-label-caps text-label-caps bg-[#1A1A1A] text-on-surface px-3 py-1 rounded border border-outline-variant/30">
+            {tech}
+          </span>
+        ))}
+      </div>
+      
+      <h1 class="text-display-lg-mobile md:text-display-lg text-primary mb-8">
+        {project.data.title}
+      </h1>
+      
+      <p class="text-body-lg text-on-surface-variant max-w-3xl">
+        {project.data.description}
+      </p>
+    </header>
+
+    <div class="text-on-surface">
+      <Content />
+    </div>
+
+    <section class="border-t border-outline-variant/30 pt-12 mt-24 flex justify-between items-center">
+      <a class="font-code-sm text-code-sm text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2" href="/">
+        <span class="material-symbols-outlined text-sm">arrow_back</span>
+        All Projects
+      </a>
+    </section>
+
+  </article>
+</BaseLayout>

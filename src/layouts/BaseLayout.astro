@@ -1,18 +1,39 @@
 ---
+import '../styles/global.css';
 const { title } = Astro.props;
 ---
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
   </head>
-  <body class="bg-gray-900 text-white min-h-screen">
-    <nav class="p-6 flex gap-6">
-      <a href="/">Home</a>
-      <a href="/blog">Blog</a>
+  <body class="bg-background text-on-surface font-body min-h-screen flex flex-col">
+    
+    <nav class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-outline-variant/30">
+      <div class="flex justify-between items-center h-16 px-margin-mobile md:px-margin-desktop max-w-[1200px] mx-auto w-full">
+        <div class="text-headline-md text-primary">DEV_CORE</div>
+        
+        <div class="hidden md:flex gap-8 items-center">
+          <a class="text-code-sm text-on-surface-variant hover:text-primary transition-colors duration-200" href="/projects">Projects</a>
+          <a class="text-code-sm text-on-surface-variant hover:text-primary transition-colors duration-200" href="/blog">Blog</a>
+          <a class="text-code-sm text-on-surface-variant hover:text-primary transition-colors duration-200" href="/">About</a>
+        </div>
+        
+        <button class="bg-primary-container text-surface-container-lowest text-code-sm px-4 py-2 rounded hover:opacity-80 transition-all scale-95 hover:scale-100 glow-button hidden md:block">
+          Resume
+        </button>
+        
+        <button class="md:hidden text-on-surface-variant hover:text-primary transition-colors duration-200">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+      </div>
     </nav>
-    <main class="max-w-4xl mx-auto p-6">
+
+    <main class="flex-grow pt-24 px-margin-mobile md:px-margin-desktop max-w-[1200px] mx-auto w-full">
       <slot />
     </main>
+
   </body>
 </html>

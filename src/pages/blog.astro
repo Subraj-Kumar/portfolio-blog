@@ -2,7 +2,6 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-// Fetch all blog posts, filter out drafts, and sort by most recent date
 const allPosts = await getCollection('blog', ({ data }) => {
   return data.draft !== true;
 });
@@ -11,41 +10,47 @@ const sortedPosts = allPosts.sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 ---
-<BaseLayout title="Subraj's Learnings">
-  <section class="mb-12">
-    <h1 class="text-3xl font-bold mb-4">Bi-Weekly Learnings</h1>
-    <p class="text-gray-400">Documenting my engineering journey, technical deep dives, and project architecture decisions.</p>
-  </section>
+<BaseLayout title="Blog | SYS.DEV">
+  
+  <header class="mb-16 max-w-3xl pt-12">
+    <h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-on-surface mb-6">Technical Logs & Learnings</h1>
+    <p class="font-body-lg text-body-lg text-on-surface-variant">Deep dives into system architecture, performance optimization, and low-level engineering. Documenting the process of building scalable software.</p>
+  </header>
 
-  <section class="space-y-6">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter mb-section-gap">
     {sortedPosts.map((post) => (
-      <a href={`/blog/${post.id}`} class="block p-6 border border-gray-800 rounded-lg hover:border-blue-400 hover:bg-gray-800/30 transition-all">
-        <div class="flex justify-between items-baseline mb-2">
-          <h2 class="text-xl font-semibold text-gray-100">{post.data.title}</h2>
-          <span class="text-sm text-gray-500 whitespace-nowrap ml-4">
-            {post.data.pubDate.toLocaleDateString('en-US', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
-            })}
+      <a href={`/blog/${post.id}`} class="surface-raised rounded-lg p-6 flex flex-col hover-glow transition-all duration-300 group cursor-pointer">
+        
+        <div class="flex justify-between items-start mb-4">
+          {post.data.tags && post.data.tags.length > 0 ? (
+            <span class="font-code-sm text-code-sm text-primary px-2 py-1 rounded bg-[#1A1A1A]">
+              {post.data.tags[0].toUpperCase()}
+            </span>
+          ) : (
+            <span class="font-code-sm text-code-sm text-primary px-2 py-1 rounded bg-[#1A1A1A]">
+              LOG
+            </span>
+          )}
+          <span class="font-code-sm text-code-sm text-tertiary-fixed-dim">
+            {post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
           </span>
         </div>
         
-        <p class="text-gray-400 text-sm mb-4">{post.data.description}</p>
+        <h2 class="font-headline-md text-headline-md text-on-surface mb-3 group-hover:text-primary-container transition-colors">
+          {post.data.title}
+        </h2>
         
-        <div class="flex items-center justify-between">
-          <div class="flex gap-2">
-            {post.data.tags && post.data.tags.map((tag) => (
-              <span class="text-xs text-blue-400 bg-blue-900/30 px-2 py-1 rounded">
-                #{tag}
-              </span>
-            ))}
-          </div>
-          {post.data.readingTime && (
-            <span class="text-xs text-gray-500">{post.data.readingTime}</span>
-          )}
+        <p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow">
+          {post.data.description}
+        </p>
+        
+        <div class="flex items-center text-on-surface-variant font-code-sm text-code-sm mt-auto group-hover:text-primary-container transition-colors">
+          <span class="material-symbols-outlined mr-2 text-[16px]">schedule</span>
+          <span>{post.data.readingTime || '5 min read'}</span>
         </div>
+        
       </a>
     ))}
-  </section>
+  </div>
+
 </BaseLayout>

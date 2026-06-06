@@ -1,49 +1,141 @@
 ---
-import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-
-// Fetch all project entries from the content collection
-const allProjects = await getCollection('projects');
+// Note: We aren't fetching the projects collection here anymore since this is purely the About overview.
 ---
-<BaseLayout title="Subraj Kumar | Portfolio">
-  <section class="mb-12">
-    <h1 class="text-4xl font-bold mb-4">Hello, I'm Subraj Kumar</h1>
-    <p class="text-xl text-gray-400">
-      Computer Science Engineering Student at JNU | Full-Stack Developer
-    </p>
-  </section>
+<BaseLayout title="Subraj Kumar | SYS.DEV">
   
-  <section>
-    <h2 class="text-2xl font-semibold mb-6">Featured Projects</h2>
-    
-    <div class="grid gap-6 md:grid-cols-2">
-      {allProjects.map((project) => (
-        <div class="p-6 border border-gray-700 rounded-lg hover:border-blue-500 transition-colors bg-gray-800/50">
-          <h3 class="text-xl font-bold mb-2">{project.data.title}</h3>
-          <p class="text-gray-400 text-sm mb-4">{project.data.description}</p>
-          
-          <div class="mb-4 flex flex-wrap gap-2">
-            {project.data.techStack.map((tech) => (
-              <span class="bg-gray-700 text-gray-200 text-xs px-2 py-1 rounded">
-                {tech}
-              </span>
-            ))}
-          </div>
-
-          <div class="flex gap-4 text-sm font-medium">
-            {project.data.githubUrl && (
-              <a href={project.data.githubUrl} target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300">
-                GitHub Repository &rarr;
-              </a>
-            )}
-            {project.data.liveUrl && (
-              <a href={project.data.liveUrl} target="_blank" rel="noopener noreferrer" class="text-green-400 hover:text-green-300">
-                Live Demo &rarr;
-              </a>
-            )}
-          </div>
+  <section class="mb-section-gap pt-12">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+      <div class="lg:col-span-7">
+        <h4 class="font-label-caps text-label-caps text-primary-container mb-4">ENGINEERING PHILOSOPHY</h4>
+        <h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-8 tracking-tighter">
+          Solving complex problems with elegant, performant code.
+        </h1>
+        <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+          I am a Computer Science Engineering student and Full-Stack Developer focused on the intersection of systems architecture, computer vision, and seamless user experiences. My approach is rooted in technical minimalism: removing the unnecessary to amplify the essential.
+        </p>
+      </div>
+      <div class="lg:col-span-5 flex justify-end mt-12 lg:mt-0">
+        <div class="relative w-full max-w-[400px] aspect-square rounded-lg overflow-hidden border border-outline-variant grayscale hover:grayscale-0 transition-all duration-700">
+          <img src="/your-portrait.jpg" alt="Subraj Kumar Portrait" class="object-cover w-full h-full" />
+          <div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent opacity-40"></div>
         </div>
-      ))}
+      </div>
     </div>
   </section>
+
+  <section class="mb-section-gap">
+    <h2 class="font-headline-md text-headline-md text-on-surface mb-12">Core Capabilities</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+      <div class="p-8 bg-surface-container-low border border-outline-variant rounded-lg hover:border-primary-container transition-colors group surface-raised hover-glow">
+        <span class="material-symbols-outlined text-primary-container mb-6 text-4xl">layers</span>
+        <h3 class="font-headline-md text-headline-md text-on-surface mb-4">Full-Stack Architecture</h3>
+        <p class="font-body-md text-body-md text-on-surface-variant">Building end-to-end platforms from Flutter mobile applications and Firebase backends to robust MERN stack web services.</p>
+      </div>
+      <div class="p-8 bg-surface-container-low border border-outline-variant rounded-lg hover:border-primary-container transition-colors group surface-raised hover-glow">
+        <span class="material-symbols-outlined text-primary-container mb-6 text-4xl">memory</span>
+        <h3 class="font-headline-md text-headline-md text-on-surface mb-4">Systems & Vision</h3>
+        <p class="font-body-md text-body-md text-on-surface-variant">Engineering low-level C++ rendering pipelines and implementing real-time computer vision models using OpenCV and YOLO.</p>
+      </div>
+      <div class="p-8 bg-surface-container-low border border-outline-variant rounded-lg hover:border-primary-container transition-colors group surface-raised hover-glow">
+        <span class="material-symbols-outlined text-primary-container mb-6 text-4xl">terminal</span>
+        <h3 class="font-headline-md text-headline-md text-on-surface mb-4">Algorithmic Precision</h3>
+        <p class="font-body-md text-body-md text-on-surface-variant">Maintaining a rigorous study of Data Structures, Algorithms, and competitive programming to ensure highly optimized logic.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="grid grid-cols-1 lg:grid-cols-2 gap-24 mb-section-gap">
+    <div>
+      <h2 class="font-headline-md text-headline-md text-on-surface mb-12">Professional Experience</h2>
+      <div class="space-y-12 relative">
+        <div class="absolute left-0 top-2 bottom-2 w-[1px] timeline-line opacity-30"></div>
+        
+        <div class="pl-8 relative">
+          <div class="absolute left-[-4px] top-2 w-2 h-2 rounded-full bg-primary-container glow-shadow"></div>
+          <span class="font-code-sm text-code-sm text-primary-container mb-2 block">FEB 2026 - MAY 2026</span>
+          <h4 class="font-headline-md text-headline-md text-on-surface">Software Intern</h4>
+          <p class="font-label-caps text-label-caps text-on-surface-variant mb-4">GETNEAR - HYPERLOCAL MARKETPLACE</p>
+          <p class="font-body-md text-body-md text-on-surface-variant mb-6">Built a production Android marketplace enabling buyers to broadcast real-time product inquiries to nearby sellers via geolocation. Integrated Firebase Auth, Firestore, and engineered a Targeted Promotions System with role-based access.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 bg-surface-container-high border border-outline-variant text-code-sm font-code-sm text-on-surface rounded">Flutter</span>
+            <span class="px-3 py-1 bg-surface-container-high border border-outline-variant text-code-sm font-code-sm text-on-surface rounded">Firebase</span>
+            <span class="px-3 py-1 bg-surface-container-high border border-outline-variant text-code-sm font-code-sm text-on-surface rounded">GCP</span>
+          </div>
+        </div>
+
+        <div class="pl-8 relative">
+          <div class="absolute left-[-4px] top-2 w-2 h-2 rounded-full bg-outline-variant"></div>
+          <span class="font-code-sm text-code-sm text-on-surface-variant mb-2 block">AUG 2025 - PRESENT</span>
+          <h4 class="font-headline-md text-headline-md text-on-surface">Executive</h4>
+          <p class="font-label-caps text-label-caps text-on-surface-variant mb-4">LOOP: THE DEVELOPER'S CLUB</p>
+          <p class="font-body-md text-body-md text-on-surface-variant mb-6">Organized technical workshops on full-stack development and DSA. Authored standard operating procedures and executed hackathons, significantly increasing student engagement.</p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h2 class="font-headline-md text-headline-md text-on-surface mb-12">Academic Foundation</h2>
+      
+      <div class="bg-surface-container-low border border-outline-variant p-8 rounded-lg mb-8 surface-raised">
+        <span class="font-code-sm text-code-sm text-primary-container mb-2 block">EXPECTED GRADUATION 2027</span>
+        <h4 class="font-headline-md text-headline-md text-on-surface mb-2">B.Tech Computer Science Engineering</h4>
+        <p class="font-label-caps text-label-caps text-on-surface-variant mb-6">JAWAHARLAL NEHRU UNIVERSITY, NEW DELHI</p>
+        
+        <h5 class="font-label-caps text-label-caps text-on-surface mb-4">FOCUSED DOMAINS</h5>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-4">
+            <span class="material-symbols-outlined text-primary-container text-xl">visibility</span>
+            <div>
+              <p class="font-body-md text-body-md text-on-surface">Computer Vision</p>
+              <p class="font-code-sm text-code-sm text-on-surface-variant">Real-time object detection and centroid tracking.</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-4">
+            <span class="material-symbols-outlined text-primary-container text-xl">dns</span>
+            <div>
+              <p class="font-body-md text-body-md text-on-surface">Systems Programming</p>
+              <p class="font-code-sm text-code-sm text-on-surface-variant">Low-level rendering pipelines and C++ engines.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4">
+        <div class="p-6 border border-outline-variant rounded-lg bg-surface-container-low">
+          <p class="font-label-caps text-label-caps text-on-surface-variant mb-2">CGPA</p>
+          <p class="font-headline-md text-headline-md text-primary-container">7.62 / 10</p>
+        </div>
+        <div class="p-6 border border-outline-variant rounded-lg bg-surface-container-low">
+          <p class="font-label-caps text-label-caps text-on-surface-variant mb-2">LEADERSHIP</p>
+          <p class="font-headline-md text-headline-md text-primary-container">Sec. Ephirium</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mb-section-gap">
+    <div class="bg-surface-container border border-outline-variant p-12 md:p-24 text-center rounded-xl relative overflow-hidden surface-raised">
+      <div class="absolute top-0 right-0 w-64 h-64 bg-primary-container/5 rounded-full blur-[100px]"></div>
+      <div class="absolute bottom-0 left-0 w-48 h-48 bg-secondary-container/5 rounded-full blur-[80px]"></div>
+      
+      <h2 class="font-display-lg text-display-lg text-on-surface mb-8 relative z-10">Let's collaborate on the next system.</h2>
+      <p class="font-body-lg text-body-lg text-on-surface-variant mb-12 max-w-2xl mx-auto relative z-10">
+        I am always looking for challenging projects in full-stack architecture, performance engineering, and systems programming.
+      </p>
+      
+      <div class="flex flex-col md:flex-row justify-center gap-gutter relative z-10">
+        <a href="mailto:kumarsubraj97@gmail.com" class="px-10 py-4 bg-primary-container text-on-primary font-label-caps text-label-caps hover:opacity-90 transition-all flex items-center justify-center gap-2 glow-button rounded">
+          <span class="material-symbols-outlined">mail</span>
+          EMAIL ME
+        </a>
+        <div class="flex gap-4 justify-center">
+          <a href="https://github.com/subraj" target="_blank" rel="noopener noreferrer" class="w-14 h-14 border border-outline-variant flex items-center justify-center hover:border-primary-container transition-colors group rounded">
+            <span class="material-symbols-outlined text-on-surface group-hover:text-primary-container">code</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </BaseLayout>
