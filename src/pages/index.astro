@@ -1,11 +1,49 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// Fetch all project entries from the content collection
+const allProjects = await getCollection('projects');
 ---
+<BaseLayout title="Subraj Kumar | Portfolio">
+  <section class="mb-12">
+    <h1 class="text-4xl font-bold mb-4">Hello, I'm Subraj Kumar</h1>
+    <p class="text-xl text-gray-400">
+      Computer Science Engineering Student at JNU | Full-Stack Developer
+    </p>
+  </section>
+  
+  <section>
+    <h2 class="text-2xl font-semibold mb-6">Featured Projects</h2>
+    
+    <div class="grid gap-6 md:grid-cols-2">
+      {allProjects.map((project) => (
+        <div class="p-6 border border-gray-700 rounded-lg hover:border-blue-500 transition-colors bg-gray-800/50">
+          <h3 class="text-xl font-bold mb-2">{project.data.title}</h3>
+          <p class="text-gray-400 text-sm mb-4">{project.data.description}</p>
+          
+          <div class="mb-4 flex flex-wrap gap-2">
+            {project.data.techStack.map((tech) => (
+              <span class="bg-gray-700 text-gray-200 text-xs px-2 py-1 rounded">
+                {tech}
+              </span>
+            ))}
+          </div>
 
-<Layout>
-	<Welcome />
-</Layout>
+          <div class="flex gap-4 text-sm font-medium">
+            {project.data.githubUrl && (
+              <a href={project.data.githubUrl} target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300">
+                GitHub Repository &rarr;
+              </a>
+            )}
+            {project.data.liveUrl && (
+              <a href={project.data.liveUrl} target="_blank" rel="noopener noreferrer" class="text-green-400 hover:text-green-300">
+                Live Demo &rarr;
+              </a>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

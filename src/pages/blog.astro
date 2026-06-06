@@ -1,0 +1,51 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Fetch all blog posts, filter out drafts, and sort by most recent date
+const allPosts = await getCollection('blog', ({ data }) => {
+  return data.draft !== true;
+});
+
+const sortedPosts = allPosts.sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+<BaseLayout title="Subraj's Learnings">
+  <section class="mb-12">
+    <h1 class="text-3xl font-bold mb-4">Bi-Weekly Learnings</h1>
+    <p class="text-gray-400">Documenting my engineering journey, technical deep dives, and project architecture decisions.</p>
+  </section>
+
+  <section class="space-y-6">
+    {sortedPosts.map((post) => (
+      <a href={`/blog/${post.id}`} class="block p-6 border border-gray-800 rounded-lg hover:border-blue-400 hover:bg-gray-800/30 transition-all">
+        <div class="flex justify-between items-baseline mb-2">
+          <h2 class="text-xl font-semibold text-gray-100">{post.data.title}</h2>
+          <span class="text-sm text-gray-500 whitespace-nowrap ml-4">
+            {post.data.pubDate.toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })}
+          </span>
+        </div>
+        
+        <p class="text-gray-400 text-sm mb-4">{post.data.description}</p>
+        
+        <div class="flex items-center justify-between">
+          <div class="flex gap-2">
+            {post.data.tags && post.data.tags.map((tag) => (
+              <span class="text-xs text-blue-400 bg-blue-900/30 px-2 py-1 rounded">
+                #{tag}
+              </span>
+            ))}
+          </div>
+          {post.data.readingTime && (
+            <span class="text-xs text-gray-500">{post.data.readingTime}</span>
+          )}
+        </div>
+      </a>
+    ))}
+  </section>
+</BaseLayout>
