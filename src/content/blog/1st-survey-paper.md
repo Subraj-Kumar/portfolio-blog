@@ -1,7 +1,7 @@
 ---
 title: "How Deep Learning Changed Medical Image Analysis"
 description: "Reviewing Geert Litjens' influential survey paper and exploring the paradigm shift from handcrafted features to Explainable AI in healthcare."
-pubDate: 2026-06-27
+pubDate: 2026-05-29
 readingTime: "4 min read"
 tags:
   [
